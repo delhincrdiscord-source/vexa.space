@@ -33,6 +33,11 @@ export const metadata: Metadata = {
       "Free high-quality Discord music bot. Supports Spotify, Apple Music, YouTube, and more.",
     images: ["/vexa-logo.png"],
   },
+  icons: {
+    icon: "/vexa-logo.png",
+    shortcut: "/vexa-logo.png",
+    apple: "/vexa-logo.png",
+  },
   robots: {
     index: true,
     follow: true,
