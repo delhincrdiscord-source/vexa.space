@@ -1,0 +1,6 @@
+{
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm --filter @workspace/vexa-landing build",
+  "outputDirectory": "artifacts/vexa-landing/dist/public",
+  "framework": null
+}
