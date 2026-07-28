@@ -21,7 +21,7 @@ export function Premium() {
             <span className="w-1.5 h-1.5 rounded-full bg-[#e03030]" />
             Pricing
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
             Choose your <span className="accent-italic">experience</span>
           </h2>
         </div>
@@ -59,7 +59,7 @@ export function Premium() {
           {/* Pro Tier (Popular) */}
           <motion.div variants={itemVariants} className="relative h-full">
             <div className="absolute inset-0 p-[1px] bg-gradient-to-b from-red-500 to-red-900 rounded-2xl">
-              <div className="bg-[#0d0d0d] h-full w-full rounded-[15px] p-8 flex flex-col relative scale-[1.02] transform shadow-2xl">
+              <div className="bg-[#0d0d0d] h-full w-full rounded-[15px] p-6 sm:p-8 flex flex-col relative md:scale-[1.02] transform shadow-2xl">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#e03030] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full whitespace-nowrap">
                   Most Popular
                 </div>

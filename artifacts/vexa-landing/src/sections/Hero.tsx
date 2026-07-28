@@ -37,7 +37,7 @@ export function Hero() {
         </motion.div>
 
         {/* Typography */}
-        <motion.h1 variants={itemVariants} className="text-7xl md:text-8xl font-extrabold leading-[1.05] tracking-tight text-white text-center mb-6">
+        <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl md:text-8xl font-extrabold leading-[1.05] tracking-tight text-white text-center mb-6 px-2">
           <span className="accent-italic">High-Quality</span><br className="hidden md:block" />
           Discord Music Bot
         </motion.h1>
