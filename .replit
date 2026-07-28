@@ -5,8 +5,9 @@ run = "pnpm --filter @workspace/vexa-landing dev"
 [deployment]
 router = "static"
 deploymentTarget = "autoscale"
-build = ["pnpm", "-r", "run", "build"]
-run = ["pnpm", "--filter", "@workspace/vexa-landing", "serve"]
+rootDir = "artifacts/vexa-landing"
+build = ["sh", "-c", "pnpm install && pnpm -r run build"]
+run = ["sh", "-c", "pnpm --filter @workspace/vexa-landing serve"]
 
 [deployment.postBuild]
 args = ["pnpm", "store", "prune"]
