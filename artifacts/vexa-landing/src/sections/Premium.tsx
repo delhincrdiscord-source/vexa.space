@@ -57,32 +57,30 @@ export function Premium() {
           </motion.div>
 
           {/* Pro Tier (Popular) */}
-          <motion.div variants={itemVariants} className="relative h-full">
-            <div className="absolute inset-0 p-[1px] bg-gradient-to-b from-red-500 to-red-900 rounded-2xl">
-              <div className="bg-[#0d0d0d] h-full w-full rounded-[15px] p-6 sm:p-8 flex flex-col relative md:scale-[1.02] transform shadow-2xl">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#e03030] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full whitespace-nowrap">
-                  Most Popular
-                </div>
-                <div className="text-[10px] tracking-widest text-[#e03030] uppercase mb-4 font-semibold mt-2">Premium</div>
-                <h3 className="text-2xl font-bold text-white mb-2">Vexa Pro</h3>
-                <div className="text-5xl font-black text-white mb-8">$1.5<span className="text-base text-white/40 font-normal">/mo</span></div>
-                <ul className="space-y-4 mb-8 flex-1">
-                  {["Priority queue (jump the line)", "Advanced equalizer & filters", "Custom per-server settings", "Extended playlist length", "Volume control presets"].map((f, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <CheckCircle className="w-4 h-4 text-[#e03030] shrink-0 mt-0.5" />
-                      <span className="text-white/90 text-sm">{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <a 
-                  href={VEXA_DATA.inviteUrls.pro}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-2.5 rounded-full bg-white text-black font-semibold hover:bg-white/90 transition-colors text-center text-sm"
-                >
-                  Get Pro
-                </a>
+          <motion.div variants={itemVariants} className="rounded-2xl p-[1px] bg-gradient-to-b from-red-500 to-red-900 md:scale-[1.02] md:z-10 flex flex-col h-full">
+            <div className="bg-[#0d0d0d] h-full w-full rounded-[15px] p-6 sm:p-8 flex flex-col relative shadow-2xl">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#e03030] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full whitespace-nowrap">
+                Most Popular
               </div>
+              <div className="text-[10px] tracking-widest text-[#e03030] uppercase mb-4 font-semibold mt-2">Premium</div>
+              <h3 className="text-2xl font-bold text-white mb-2">Vexa Pro</h3>
+              <div className="text-5xl font-black text-white mb-8">$1.5<span className="text-base text-white/40 font-normal">/mo</span></div>
+              <ul className="space-y-4 mb-8 flex-1">
+                {["Priority queue (jump the line)", "Advanced equalizer & filters", "Custom per-server settings", "Extended playlist length", "Volume control presets"].map((f, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <CheckCircle className="w-4 h-4 text-[#e03030] shrink-0 mt-0.5" />
+                    <span className="text-white/90 text-sm">{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <a 
+                href={VEXA_DATA.inviteUrls.pro}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 rounded-full bg-white text-black font-semibold hover:bg-white/90 transition-colors text-center text-sm"
+              >
+                Get Pro
+              </a>
             </div>
           </motion.div>
 
