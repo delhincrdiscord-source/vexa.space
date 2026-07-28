@@ -1,0 +1,199 @@
+Build a professional, modern, single-page landing website for Vexa, a free Discord music bot. The site is a marketing/showcase page — no backend, no API routes, no database. Purely static/SSG.
+BOT INFORMATION
+- Name: Vexa
+- Type: Discord Music Bot (free, with premium tiers)
+- Tagline: "Free High-Quality Discord Music Bot"
+- Support Server: https://discord.gg/delhi
+- Invite Permissions: 282162275675329 | Scopes: bot+applications.commands
+Discord OAuth2 Client IDs (3 bots)
+Tier
+Free (Vexa)
+Premium (Vexa Pro)
+Premium+ (Vexa Ultra)
+Invite URLs
+- Free: https://discord.com/oauth2/authorize?client_id=1529737651098226718&permissions=282162275675329&integration_type=0&scope=bot+applications.commands
+- Premium: https://discord.com/oauth2/authorize?client_id=1529737818539298897&permissions=282162275675329&integration_type=0&scope=bot+applications.commands
+- Premium+: https://discord.com/oauth2/authorize?client_id=1529737931529519195&permissions=282162275675329&integration_type=0&scope=bot+applications.commands
+Stats
+- 50,000+ Servers
+- 2,000,000+ Users
+- 45+ Commands
+Supported Sources
+Spotify, Apple Music, YouTube, SoundCloud, Tidal, Deezer, and 200+ more sources
+Commands (12 showcased)
+Command
+/play
+/pause
+/skip
+/queue
+/shuffle
+/loop
+/volume
+/nowplaying
+/lyrics
+/playlist
+/247
+/filters
+Features (6 showcased)
+1. High-Quality Audio — Crystal-clear audio from YouTube, Spotify, SoundCloud, Apple Music, Tidal, Deezer, and 200+ sources.
+2. Smart Queue — Intelligent queue management with shuffle, repeat, skip, and vote-skip. Remembers your preferences.
+3. Playlist Support — Import and play full playlists from Spotify, YouTube, and more. Auto-fetch lyrics and album art.
+4. Rock-Solid Stability — Custom audio engine optimized for Discord. Zero crashes, automatic reconnection, 99.9% uptime.
+5. Rich Controls — Interactive buttons, slash commands, and a powerful dashboard. Volume, equalizer, filters, and more.
+6. Instant Setup — Add Vexa with one click. No configuration needed. It just works. Advanced settings for power users.
+Premium Tiers
+Vexa (Free)
+- High-quality audio playback
+- Queue & playlist support
+- Slash commands with autocomplete
+- 24/7 voice channel mode
+- Basic audio filters
+Vexa Pro (Premium — "Most Popular")
+- Everything in Free
+- Priority queue (jump the line)
+- Advanced equalizer & filters
+- Custom per-server settings
+- Extended playlist length
+Vexa Ultra (Premium+)
+- Everything in Pro
+- Dedicated audio cluster
+- Lossless audio quality
+- Exclusive filters & effects
+- Priority support channel
+TECH STACK
+Category
+Framework
+Language
+UI
+Styling
+Animations
+Utilities
+Path Alias
+DESIGN SYSTEM
+Color Palette
+Token
+--color-background
+--color-surface-base
+--color-surface-card
+--color-surface-raised
+--color-surface-hover
+--color-brand
+--color-brand-hover
+--color-brand-light
+--color-brand-glow
+--color-text-primary
+--color-text-secondary
+--color-text-tertiary
+--color-border-subtle
+--color-border-default
+--color-border-strong
+Typography
+- Font Family: Inter (system fallback stack)
+- Display Font: Same as sans (Inter)
+- Anti-aliased: Yes (-webkit-font-smoothing: antialiased)
+UI Patterns
+- Dark theme throughout
+- Purple accent (#7c5cff) for CTAs and highlights
+- Cards: bg-[#1c1c26] with border-white/[0.04] → hover border-white/[0.08]
+- Buttons: Primary = purple bg, Secondary = outline with border-white/[0.12]
+- Badge: Small uppercase pill (text-[11px], font-semibold, text-[#5e6578])
+- Section backgrounds alternate between #0e0e12 and #16161d
+- Smooth scroll, custom scrollbar (thin, dark)
+- Selection highlight: purple
+PAGE STRUCTURE (Single Page)
+Navigation (sticky, glassmorphism on scroll)
+- Logo (Vexa logo + text) | Links: Features, Commands, FAQ, Status, Top Songs, Radios | "Premium✨" (gold) | "Add Vexa" CTA button
+- Mobile: hamburger menu with slide-down panel
+- Scroll behavior: transparent → bg-[#0e0e12]/90 backdrop-blur-xl after 20px
+Hero Section
+- Radial purple glow behind logo (blur 120px)
+- Logo: 180x180px with purple glow shadow
+- Headline: "Free High-Quality / Discord Music Bot" (60px, black weight, uppercase)
+- Subtitle: "It supports Spotify, Apple Music, YouTube, SoundCloud, direct links, Radio and more"
+- 3 CTA buttons: "Add Vexa" (Discord icon), "Join Support" (Discord icon), "TOP.GG" (layers icon)
+- Wave SVG divider to next section
+Stats Bar
+- 3-column grid: 50,000+ Servers | 2,000,000+ Users | 45+ Commands
+- Icon in purple circle + value + label
+Features Section
+- Badge: "Features" | Title: "Everything your server needs" | Subtitle: "Built from the ground up for reliability, quality, and simplicity."
+- 6-card grid (3 cols on desktop)
+- Each card: icon in purple circle + title + description
+How It Works Section
+- Badge: "How It Works" | Title: "Up and running in 30 seconds" | Subtitle: "No complex setup. No configuration files. Just add and play."
+- 3-step horizontal flow with connecting lines
+- Steps: Add to Discord → Join a Voice Channel → Play Music
+Premium/Pricing Section
+- Badge: "Premium" | Title: "Choose your experience" | Subtitle: "Start free, upgrade when you need more."
+- 3-column pricing cards
+- "Vexa Pro" highlighted with gradient border + "Most Popular" badge
+- Each card: tier tag + name + description + feature checklist + CTA button
+Commands Section
+- Badge: "Commands" | Title: "Powerful, intuitive commands" | Subtitle: "Slash commands with autocomplete. Your members will figure it out instantly."
+- 3-column grid of 12 commands
+- Each: purple code pill (/command) + description
+CTA Section
+- Card with gradient background
+- Title: "Ready to level up your server?"
+- Subtitle: "Join thousands of servers already using Vexa. Free to use, no ads, no limits."
+- 2 buttons: "Add to Discord" (purple) + "Join Support" (outline)
+Footer
+- Brand logo + description
+- 3 link columns: Product | Resources | Legal
+- Bottom bar: copyright + Discord icon
+SEO METADATA
+Title: "Vexa — Free Discord Music Bot"
+Description: "Free high-quality Discord music bot. Supports Spotify, Apple Music, YouTube, SoundCloud, and 200+ sources. Queue management, playlists, and zero-lag playback."
+Keywords: discord bot, music bot, discord music, spotify, youtube, voice channel, playlist
+OG Type: website | Locale: en_US | Site Name: Vexa
+Twitter Card: summary_large_image
+Favicon: /vexa-logo.png
+Theme Color: #0e0e12
+Robots: index, follow
+COMPONENT ARCHITECTURE
+src/
+├── app/
+│   ├── globals.css          # Tailwind theme + global styles
+│   ├── layout.tsx           # Root layout + SEO metadata
+│   └── page.tsx             # Home page (composes all sections)
+├── components/
+│   ├── Badge.tsx            # Reusable badge pill
+│   ├── Button.tsx           # Polymorphic button (as prop)
+│   ├── Footer.tsx           # Site footer
+│   ├── Navigation.tsx       # Sticky nav with mobile menu
+│   ├── ScrollReveal.tsx     # IntersectionObserver animation wrapper
+│   ├── SectionHeading.tsx   # Reusable section title
+│   └── sections/
+│       ├── Hero.tsx
+│       ├── Features.tsx
+│       ├── HowItWorks.tsx
+│       ├── Premium.tsx
+│       ├── Commands.tsx
+│       ├── Stats.tsx
+│       └── CTA.tsx
+└── lib/
+    ├── config.ts            # Bot URLs, support server, premium tiers
+    └── utils.ts             # cn() classname utility
+KEY REQUIREMENTS
+1. All components use "use client" (except Footer, Badge, SectionHeading)
+2. ScrollReveal wraps sections with fade-in-up animation on scroll (IntersectionObserver)
+3. Responsive design — mobile-first, works on all screen sizes
+4. No external images — only /vexa-logo.png in public folder
+5. All links open in new tab with target="_blank" rel="noopener noreferrer"
+6. Accessibility — proper aria-labels, focus-visible states, semantic HTML
+7. Performance — optimized images, lazy loading, minimal JS
+8. Dark theme only — no light mode toggle
+WHAT TO BUILD
+Create a complete, production-ready Next.js landing page with:
+- All sections described above
+- Smooth scroll animations (use Framer Motion or IntersectionObserver)
+- Mobile-responsive navigation with hamburger menu
+- Interactive pricing cards with hover effects
+- Command grid with hover states
+- Final CTA section with Discord integration
+- Footer with proper links and copyright
+The site should feel premium, polished, and conversion-focused — driving users to click "Add to Discord" and join the support server.
+
+
+
+replit ko dene ke liye sahi hai ?

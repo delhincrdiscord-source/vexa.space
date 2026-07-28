@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Vexa — Discord Music Bot"
+version = "1.0.0"
+id = "artifacts/vexa-landing"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22922
+
+[services.development]
+run = "pnpm --filter @workspace/vexa-landing run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/vexa-landing", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/vexa-landing/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22922"
+BASE_PATH = "/"
