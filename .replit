@@ -3,11 +3,8 @@ modules = ["nodejs-24"]
 run = "pnpm --filter @workspace/vexa-landing dev"
 
 [deployment]
-router = "static"
+router = "application"
 deploymentTarget = "autoscale"
-rootDir = "artifacts/vexa-landing"
-build = ["sh", "-c", "pnpm install && pnpm -r run build"]
-run = ["sh", "-c", "pnpm --filter @workspace/vexa-landing serve"]
 
 [deployment.postBuild]
 args = ["pnpm", "store", "prune"]
