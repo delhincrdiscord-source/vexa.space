@@ -1,101 +1,114 @@
 import { VEXA_DATA } from '@/lib/config';
-import { ScrollReveal, StaggerChildren, StaggerItem } from '@/components/ScrollReveal';
-import { Check } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export function Premium() {
-  return (
-    <section id="pricing" className="py-24 bg-[#0e0e12]">
-      <div className="max-w-7xl mx-auto px-6">
-        <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-sm font-semibold mb-6">
-            Premium ✨
-          </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">Choose your experience</h2>
-          <p className="text-lg text-secondary-foreground">
-            Start free forever, upgrade when your server needs more power.
-          </p>
-        </ScrollReveal>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.1 } }
+  };
 
-        <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center max-w-6xl mx-auto">
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
+
+  return (
+    <section id="pricing" className="py-32 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-16 flex flex-col items-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/[0.08] bg-[rgba(255,255,255,0.06)] text-[11px] tracking-widest uppercase text-white/60 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#e03030]" />
+            Pricing
+          </div>
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+            Choose your <span className="accent-italic">experience</span>
+          </h2>
+        </div>
+
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center max-w-6xl mx-auto"
+        >
           {/* Free Tier */}
-          <StaggerItem>
-            <div className="bg-card border border-white/5 rounded-3xl p-8 transition-all hover:border-white/10 flex flex-col h-[500px]">
-              <h3 className="text-xl font-semibold text-white mb-2">Vexa Free</h3>
-              <div className="text-4xl font-bold text-white mb-6">$0<span className="text-lg text-secondary-foreground font-normal">/mo</span></div>
-              <ul className="space-y-4 mb-8 flex-1">
-                {["High-quality audio playback", "Queue & playlist support", "Slash commands with autocomplete", "24/7 voice channel mode", "Basic audio filters"].map((f, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                    <span className="text-secondary-foreground text-sm">{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <a 
-                href={VEXA_DATA.inviteUrls.free}
-                target="_blank"
-                rel="noreferrer"
-                className="w-full py-3 rounded-xl border border-white/10 text-white font-medium hover:bg-white/5 transition-colors text-center"
-              >
-                Add for Free
-              </a>
-            </div>
-          </StaggerItem>
+          <motion.div variants={itemVariants} className="bg-[#0d0d0d] border border-white/[0.06] rounded-2xl p-8 hover:border-white/[0.1] hover:-translate-y-0.5 transition-all duration-300 flex flex-col h-full">
+            <div className="text-[10px] tracking-widest text-[#e03030] uppercase mb-4 font-semibold">Basic</div>
+            <h3 className="text-2xl font-bold text-white mb-2">Vexa Free</h3>
+            <div className="text-5xl font-black text-white mb-8">$0<span className="text-base text-white/40 font-normal">/mo</span></div>
+            <ul className="space-y-4 mb-8 flex-1">
+              {["High-quality audio playback", "Queue & playlist support", "Slash commands with autocomplete", "24/7 voice channel mode", "Basic audio filters"].map((f, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <CheckCircle className="w-4 h-4 text-[#e03030] shrink-0 mt-0.5" />
+                  <span className="text-white/60 text-sm">{f}</span>
+                </li>
+              ))}
+            </ul>
+            <a 
+              href={VEXA_DATA.inviteUrls.free}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-2.5 rounded-full border border-white/20 text-white font-medium hover:border-white/40 transition-colors text-center text-sm"
+            >
+              Add for Free
+            </a>
+          </motion.div>
 
           {/* Pro Tier (Popular) */}
-          <StaggerItem className="relative">
-            <div className="absolute -inset-[1px] bg-gradient-to-b from-primary to-primary/20 rounded-[25px] blur-sm opacity-50" />
-            <div className="bg-[#1c1c26] border border-primary/50 rounded-3xl p-8 relative flex flex-col h-[540px] transform md:-translate-y-4 shadow-2xl shadow-primary/10">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full">
-                Most Popular
+          <motion.div variants={itemVariants} className="relative h-full">
+            <div className="absolute inset-0 p-[1px] bg-gradient-to-b from-red-500 to-red-900 rounded-2xl">
+              <div className="bg-[#0d0d0d] h-full w-full rounded-[15px] p-8 flex flex-col relative scale-[1.02] transform shadow-2xl">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#e03030] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full whitespace-nowrap">
+                  Most Popular
+                </div>
+                <div className="text-[10px] tracking-widest text-[#e03030] uppercase mb-4 font-semibold mt-2">Premium</div>
+                <h3 className="text-2xl font-bold text-white mb-2">Vexa Pro</h3>
+                <div className="text-5xl font-black text-white mb-8">$4.99<span className="text-base text-white/40 font-normal">/mo</span></div>
+                <ul className="space-y-4 mb-8 flex-1">
+                  {["Priority queue (jump the line)", "Advanced equalizer & filters", "Custom per-server settings", "Extended playlist length", "Volume control presets"].map((f, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <CheckCircle className="w-4 h-4 text-[#e03030] shrink-0 mt-0.5" />
+                      <span className="text-white/90 text-sm">{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a 
+                  href={VEXA_DATA.inviteUrls.pro}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-2.5 rounded-full bg-white text-black font-semibold hover:bg-white/90 transition-colors text-center text-sm"
+                >
+                  Get Pro
+                </a>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2 mt-2">Vexa Pro</h3>
-              <div className="text-4xl font-bold text-white mb-6">$4.99<span className="text-lg text-secondary-foreground font-normal">/mo</span></div>
-              <div className="text-sm text-primary mb-4 font-medium">Everything in Free, plus:</div>
-              <ul className="space-y-4 mb-8 flex-1">
-                {["Priority queue (jump the line)", "Advanced equalizer & filters", "Custom per-server settings", "Extended playlist length", "Volume control presets"].map((f, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                    <span className="text-white text-sm">{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <a 
-                href={VEXA_DATA.inviteUrls.pro}
-                target="_blank"
-                rel="noreferrer"
-                className="w-full py-3 rounded-xl bg-primary text-white font-bold hover:bg-primary/90 transition-colors text-center shadow-lg shadow-primary/25"
-              >
-                Get Pro
-              </a>
             </div>
-          </StaggerItem>
+          </motion.div>
 
           {/* Ultra Tier */}
-          <StaggerItem>
-            <div className="bg-card border border-white/5 rounded-3xl p-8 transition-all hover:border-white/10 flex flex-col h-[500px]">
-              <h3 className="text-xl font-semibold text-white mb-2 flex items-center gap-2">Vexa Ultra <span className="text-amber-400 text-sm font-normal bg-amber-400/10 px-2 py-0.5 rounded">Premium+</span></h3>
-              <div className="text-4xl font-bold text-white mb-6">$9.99<span className="text-lg text-secondary-foreground font-normal">/mo</span></div>
-              <div className="text-sm text-secondary-foreground mb-4 font-medium">Everything in Pro, plus:</div>
-              <ul className="space-y-4 mb-8 flex-1">
-                {["Dedicated audio cluster", "Lossless audio quality", "Exclusive filters & effects", "Priority support channel", "Auto-play related songs"].map((f, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
-                    <span className="text-secondary-foreground text-sm">{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <a 
-                href={VEXA_DATA.inviteUrls.ultra}
-                target="_blank"
-                rel="noreferrer"
-                className="w-full py-3 rounded-xl bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition-colors text-center"
-              >
-                Get Ultra
-              </a>
-            </div>
-          </StaggerItem>
-
-        </StaggerChildren>
+          <motion.div variants={itemVariants} className="bg-[#0d0d0d] border border-white/[0.06] rounded-2xl p-8 hover:border-white/[0.1] hover:-translate-y-0.5 transition-all duration-300 flex flex-col h-full">
+            <div className="text-[10px] tracking-widest text-[#e03030] uppercase mb-4 font-semibold">Ultimate</div>
+            <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">Vexa Ultra</h3>
+            <div className="text-5xl font-black text-white mb-8">$9.99<span className="text-base text-white/40 font-normal">/mo</span></div>
+            <ul className="space-y-4 mb-8 flex-1">
+              {["Dedicated audio cluster", "Lossless audio quality", "Exclusive filters & effects", "Priority support channel", "Auto-play related songs"].map((f, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <CheckCircle className="w-4 h-4 text-[#e03030] shrink-0 mt-0.5" />
+                  <span className="text-white/60 text-sm">{f}</span>
+                </li>
+              ))}
+            </ul>
+            <a 
+              href={VEXA_DATA.inviteUrls.ultra}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-2.5 rounded-full border border-white/20 text-white font-medium hover:border-white/40 transition-colors text-center text-sm"
+            >
+              Get Ultra
+            </a>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

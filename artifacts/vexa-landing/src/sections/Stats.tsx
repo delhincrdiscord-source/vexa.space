@@ -1,38 +1,34 @@
 import { VEXA_DATA } from '@/lib/config';
-import { ScrollReveal } from '@/components/ScrollReveal';
-import { Server, Users, Terminal } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export function Stats() {
   return (
-    <section className="py-20 bg-[#16161d] relative z-10 border-b border-white/5">
-      <div className="max-w-7xl mx-auto px-6">
-        <ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 divide-y md:divide-y-0 md:divide-x divide-white/10">
+    <section className="py-32 px-6">
+      <div className="max-w-4xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="bg-[#0d0d0d] border border-white/[0.06] rounded-2xl p-12 shadow-2xl"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-white/[0.06]">
             <div className="flex flex-col items-center text-center pt-8 md:pt-0">
-              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                <Server className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="text-4xl font-black text-white tracking-tight mb-2">{VEXA_DATA.stats.servers}</h3>
-              <p className="text-secondary-foreground font-medium uppercase tracking-widest text-sm">Active Servers</p>
+              <h3 className="text-6xl font-black text-white tracking-tighter">{VEXA_DATA.stats.servers}</h3>
+              <p className="text-[11px] tracking-[0.15em] uppercase text-white/40 mt-3">Active Servers</p>
             </div>
             
             <div className="flex flex-col items-center text-center pt-8 md:pt-0">
-              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                <Users className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="text-4xl font-black text-white tracking-tight mb-2">{VEXA_DATA.stats.users}</h3>
-              <p className="text-secondary-foreground font-medium uppercase tracking-widest text-sm">Happy Users</p>
+              <h3 className="text-6xl font-black text-white tracking-tighter">{VEXA_DATA.stats.users}</h3>
+              <p className="text-[11px] tracking-[0.15em] uppercase text-white/40 mt-3">Happy Users</p>
             </div>
             
             <div className="flex flex-col items-center text-center pt-8 md:pt-0">
-              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                <Terminal className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="text-4xl font-black text-white tracking-tight mb-2">{VEXA_DATA.stats.commands}</h3>
-              <p className="text-secondary-foreground font-medium uppercase tracking-widest text-sm">Slash Commands</p>
+              <h3 className="text-6xl font-black text-white tracking-tighter">{VEXA_DATA.stats.commands}</h3>
+              <p className="text-[11px] tracking-[0.15em] uppercase text-white/40 mt-3">Slash Commands</p>
             </div>
           </div>
-        </ScrollReveal>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { VEXA_DATA } from '@/lib/config';
-import { Menu, X, AudioWaveform } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import vexaLogo from '@assets/vexa-logo_1785211339452.png';
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,86 +25,78 @@ export function Navigation() {
   };
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'vexa-glass py-3' : 'bg-transparent py-5'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+      <header 
+        className={`pointer-events-auto flex items-center justify-between gap-6 px-5 py-2.5 rounded-full border bg-black/80 backdrop-blur-xl max-w-4xl w-full transition-all duration-300 ${
+          isScrolled ? 'border-white/20' : 'border-white/[0.08]'
+        }`}
+      >
         {/* Logo */}
         <div 
-          className="flex items-center gap-3 cursor-pointer group"
+          className="flex items-center gap-2 cursor-pointer group"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-[#1c1c26] border border-white/10 group-hover:border-[#7c5cff]/50 transition-colors">
-            <div className="absolute inset-0 rounded-full bg-[#7c5cff]/20 blur-md group-hover:bg-[#7c5cff]/40 transition-all duration-500" />
-            <AudioWaveform className="w-5 h-5 text-[#7c5cff] relative z-10" />
-          </div>
-          <span className="text-xl font-bold tracking-tight text-white">Vexa</span>
+          <img src={vexaLogo} alt="Vexa" className="w-7 h-7 rounded-full object-cover" />
+          <span className="text-base font-bold tracking-tight text-white">Vexa</span>
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          <button onClick={() => scrollTo('features')} className="text-sm font-medium text-secondary-foreground hover:text-white transition-colors">Features</button>
-          <button onClick={() => scrollTo('commands')} className="text-sm font-medium text-secondary-foreground hover:text-white transition-colors">Commands</button>
-          <button onClick={() => scrollTo('pricing')} className="text-sm font-medium text-secondary-foreground hover:text-white transition-colors">Pricing</button>
-          <a href={VEXA_DATA.supportServerUrl} target="_blank" rel="noreferrer" className="text-sm font-medium text-secondary-foreground hover:text-white transition-colors">FAQ</a>
+        <nav className="hidden md:flex items-center gap-1">
+          <button onClick={() => scrollTo('features')} className="text-[13px] text-white/60 hover:text-white px-3 py-1 rounded-full hover:bg-white/5 transition">Features</button>
+          <button onClick={() => scrollTo('commands')} className="text-[13px] text-white/60 hover:text-white px-3 py-1 rounded-full hover:bg-white/5 transition">Commands</button>
+          <button onClick={() => scrollTo('pricing')} className="text-[13px] text-white/60 hover:text-white px-3 py-1 rounded-full hover:bg-white/5 transition">Pricing</button>
+          <a href={VEXA_DATA.supportServerUrl} target="_blank" rel="noopener noreferrer" className="text-[13px] text-white/60 hover:text-white px-3 py-1 rounded-full hover:bg-white/5 transition">FAQ</a>
         </nav>
 
         {/* Right Actions */}
-        <div className="hidden md:flex items-center gap-6">
-          <button onClick={() => scrollTo('pricing')} className="text-sm font-medium text-amber-400 hover:text-amber-300 transition-colors flex items-center gap-1">
-            Premium ✨
-          </button>
+        <div className="hidden md:flex items-center">
+          <span className="text-[13px] text-amber-400 mr-4 font-medium">Premium ✨</span>
           <a 
             href={VEXA_DATA.inviteUrls.free} 
             target="_blank" 
-            rel="noreferrer"
-            className="px-5 py-2.5 rounded-full bg-primary text-white text-sm font-semibold hover:bg-primary/90 transition-all hover:shadow-[0_0_20px_rgba(124,92,255,0.4)] active:scale-95"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 bg-white text-black text-[13px] font-semibold px-4 py-1.5 rounded-full hover:bg-white/90 transition-colors"
           >
-            Add Vexa
+            Add Vexa <ArrowRight className="w-3 h-3" />
           </a>
         </div>
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden p-2 text-secondary-foreground hover:text-white"
+          className="md:hidden p-1 text-white/60 hover:text-white pointer-events-auto"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
-      </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-[#0e0e12] border-b border-white/5 p-6 shadow-2xl md:hidden flex flex-col gap-6"
-          >
-            <button onClick={() => scrollTo('features')} className="text-left text-lg font-medium text-secondary-foreground hover:text-white">Features</button>
-            <button onClick={() => scrollTo('commands')} className="text-left text-lg font-medium text-secondary-foreground hover:text-white">Commands</button>
-            <button onClick={() => scrollTo('pricing')} className="text-left text-lg font-medium text-secondary-foreground hover:text-white">Pricing</button>
-            <a href={VEXA_DATA.supportServerUrl} target="_blank" rel="noreferrer" className="text-left text-lg font-medium text-secondary-foreground hover:text-white">FAQ</a>
-            
-            <div className="h-px bg-white/10 w-full my-2" />
-            
-            <button onClick={() => scrollTo('pricing')} className="text-left text-lg font-medium text-amber-400">
-              Premium ✨
-            </button>
-            <a 
-              href={VEXA_DATA.inviteUrls.free} 
-              target="_blank" 
-              rel="noreferrer"
-              className="px-5 py-3 rounded-xl bg-primary text-white text-center font-semibold mt-2"
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="absolute top-[calc(100%+0.5rem)] left-0 right-0 bg-black/90 border border-white/[0.08] backdrop-blur-xl p-4 rounded-2xl md:hidden flex flex-col gap-2"
             >
-              Add Vexa
-            </a>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+              <button onClick={() => scrollTo('features')} className="text-left text-sm font-medium text-white/60 hover:text-white p-2">Features</button>
+              <button onClick={() => scrollTo('commands')} className="text-left text-sm font-medium text-white/60 hover:text-white p-2">Commands</button>
+              <button onClick={() => scrollTo('pricing')} className="text-left text-sm font-medium text-white/60 hover:text-white p-2">Pricing</button>
+              <a href={VEXA_DATA.supportServerUrl} target="_blank" rel="noopener noreferrer" className="text-left text-sm font-medium text-white/60 hover:text-white p-2">FAQ</a>
+              
+              <div className="h-px bg-white/10 w-full my-2" />
+              
+              <a 
+                href={VEXA_DATA.inviteUrls.free} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex justify-center items-center gap-1.5 bg-white text-black text-[13px] font-semibold px-4 py-2.5 rounded-full w-full"
+              >
+                Add Vexa <ArrowRight className="w-3 h-3" />
+              </a>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+    </div>
   );
 }

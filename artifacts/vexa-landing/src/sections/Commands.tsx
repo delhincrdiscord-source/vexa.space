@@ -1,44 +1,48 @@
 import { COMMANDS } from '@/lib/config';
-import { ScrollReveal, StaggerChildren, StaggerItem } from '@/components/ScrollReveal';
-import { TerminalSquare } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export function Commands() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.05 } }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+  };
+
   return (
-    <section id="commands" className="py-24 bg-[#16161d] border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-6">
-        <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold mb-6">
+    <section id="commands" className="py-32 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-16 flex flex-col items-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/[0.08] bg-[rgba(255,255,255,0.06)] text-[11px] tracking-widest uppercase text-white/60 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#e03030]" />
             Commands
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">Powerful, intuitive controls</h2>
-          <p className="text-lg text-secondary-foreground">
-            Slash commands with autocomplete. Your members will figure it out instantly.
-          </p>
-        </ScrollReveal>
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+            Powerful, <span className="accent-italic">intuitive commands</span>
+          </h2>
+        </div>
 
-        <StaggerChildren className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+        >
           {COMMANDS.map((cmd, i) => (
-            <StaggerItem key={i}>
-              <div className="group bg-card border border-white/5 rounded-xl p-5 hover:bg-white/5 hover:border-white/10 transition-all duration-300 hover:-translate-y-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <TerminalSquare className="w-4 h-4 text-primary opacity-50 group-hover:opacity-100 transition-opacity" />
-                  <code className="text-primary font-mono text-sm bg-primary/10 px-2 py-0.5 rounded">
-                    {cmd.name}
-                  </code>
-                </div>
-                <p className="text-sm text-secondary-foreground group-hover:text-white/90 transition-colors">
-                  {cmd.desc}
-                </p>
+            <motion.div key={i} variants={itemVariants} className="bg-[#0d0d0d] border border-white/[0.06] rounded-2xl p-6 hover:border-white/[0.1] hover:-translate-y-0.5 transition-all duration-300">
+              <div className="inline-block bg-[#2d0a0a] text-[#f08080] text-sm font-mono rounded-lg px-3 py-1 mb-3">
+                {cmd.name}
               </div>
-            </StaggerItem>
+              <p className="text-white/50 text-sm">
+                {cmd.desc}
+              </p>
+            </motion.div>
           ))}
-        </StaggerChildren>
-
-        <ScrollReveal className="mt-12 text-center">
-          <p className="text-secondary-foreground text-sm">
-            + 30 more commands available in the bot. Type <code className="text-primary bg-primary/10 px-1 py-0.5 rounded">/help</code> to see them all.
-          </p>
-        </ScrollReveal>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,91 +1,89 @@
 import { motion } from 'framer-motion';
 import { VEXA_DATA } from '@/lib/config';
-import { AudioWaveform, ExternalLink } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import vexaLogo from '@assets/vexa-logo_1785211339452.png';
 import { SiDiscord } from 'react-icons/si';
 
 export function Hero() {
-  return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden flex items-center justify-center min-h-[90vh]">
-      {/* Background Effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#7c5cff]/20 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxyZWN0IHdpZHRoPSI4IiBoZWlnaHQ9IjgiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMiIvPjwvc3ZnPg==')] opacity-30 pointer-events-none mix-blend-overlay" />
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full flex flex-col items-center text-center">
-        {/* Floating Logo */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-8 relative"
-        >
-          <motion.div
-            animate={{ y: [-10, 10, -10] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="relative flex items-center justify-center w-32 h-32 md:w-40 md:h-40 rounded-full bg-[#1c1c26] border border-white/10 shadow-[0_0_60px_rgba(124,92,255,0.3)]"
-          >
-            <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl animate-pulse" />
-            <AudioWaveform className="w-16 h-16 md:w-20 md:h-20 text-primary relative z-10" />
-          </motion.div>
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
+
+  return (
+    <section className="relative min-h-screen flex flex-col justify-center items-center pt-32 pb-32 px-6">
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+        className="max-w-5xl mx-auto w-full flex flex-col items-center text-center relative z-10"
+      >
+        {/* Top badge */}
+        <motion.div variants={itemVariants} className="mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/[0.08] bg-[rgba(255,255,255,0.06)] text-[11px] tracking-widest uppercase text-white/60">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#e03030]" />
+            New Version Available
+          </div>
         </motion.div>
 
         {/* Typography */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-        >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white uppercase leading-[1.1] mb-6">
-            Free High-Quality <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7c5cff] to-[#b39eff]">Discord Music Bot</span>
-          </h1>
-          <p className="text-lg md:text-xl text-secondary-foreground max-w-2xl mx-auto mb-10 font-medium">
-            It supports Spotify, Apple Music, YouTube, SoundCloud, direct links, Radio and more. Zero configuration required.
-          </p>
-        </motion.div>
+        <motion.h1 variants={itemVariants} className="text-7xl md:text-8xl font-extrabold leading-[1.05] tracking-tight text-white text-center mb-6">
+          <span className="accent-italic">High-Quality</span><br className="hidden md:block" />
+          Discord Music Bot
+        </motion.h1>
+        
+        <motion.p variants={itemVariants} className="text-white/50 text-lg max-w-md mx-auto text-center mt-2 mb-10">
+          It supports Spotify, Apple Music, YouTube, SoundCloud, direct links, Radio and more. Zero configuration required.
+        </motion.p>
 
         {/* Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
-        >
+        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
           <a
             href={VEXA_DATA.inviteUrls.free}
             target="_blank"
-            rel="noreferrer"
-            className="flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full bg-primary text-white font-bold text-lg hover:bg-primary/90 transition-all hover:shadow-[0_0_30px_rgba(124,92,255,0.4)] active:scale-95 group"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 px-5 py-2 rounded-full bg-white text-black font-semibold hover:bg-white/90 transition-colors w-full sm:w-auto"
           >
-            <SiDiscord className="w-5 h-5 group-hover:-rotate-12 transition-transform" />
+            <SiDiscord className="w-4 h-4" />
             Add Vexa
+            <ArrowRight className="w-4 h-4 ml-1" />
           </a>
           <a
             href={VEXA_DATA.supportServerUrl}
             target="_blank"
-            rel="noreferrer"
-            className="flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-semibold text-lg hover:bg-white/10 transition-all active:scale-95"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 px-5 py-2 rounded-full bg-transparent border border-white/20 text-white font-medium hover:border-white/40 transition-colors w-full sm:w-auto"
           >
-            <SiDiscord className="w-5 h-5 text-secondary-foreground" />
             Join Support
           </a>
           <a
             href="#"
             target="_blank"
-            rel="noreferrer"
-            className="flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-semibold text-lg hover:bg-white/10 transition-all active:scale-95"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 px-5 py-2 rounded-full bg-transparent border border-white/20 text-white font-medium hover:border-white/40 transition-colors w-full sm:w-auto"
           >
-            <ExternalLink className="w-5 h-5 text-secondary-foreground" />
             TOP.GG
           </a>
         </motion.div>
-      </div>
-
-      {/* Wave divider at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-0 rotate-180">
-        <svg className="relative block w-full h-[50px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-[#16161d]"></path>
-        </svg>
-      </div>
+        
+        {/* Hero Visual */}
+        <motion.div variants={itemVariants} className="mt-24 relative flex items-center justify-center w-full max-w-2xl mx-auto">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(224,48,48,0.35),transparent_60%)] blur-3xl pointer-events-none w-full h-[400px] -mt-16" />
+          <div className="relative z-10 flex items-center justify-center">
+            <img src={vexaLogo} alt="Vexa" className="w-40 h-40 rounded-full object-cover drop-shadow-[0_0_40px_rgba(224,48,48,0.5)]" />
+          </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

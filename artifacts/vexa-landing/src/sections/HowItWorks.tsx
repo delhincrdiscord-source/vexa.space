@@ -1,57 +1,67 @@
-import { ScrollReveal, StaggerChildren, StaggerItem } from '@/components/ScrollReveal';
+import { motion } from 'framer-motion';
 
 export function HowItWorks() {
   const steps = [
     {
-      num: "1",
+      num: "01",
       title: "Add to Discord",
       desc: "Click 'Add Vexa' and authorize with your Discord server."
     },
     {
-      num: "2",
+      num: "02",
       title: "Join a Voice Channel",
       desc: "Have your members join any voice channel to prepare for playback."
     },
     {
-      num: "3",
+      num: "03",
       title: "Play Music",
       desc: "Use /play <song> and enjoy crystal-clear music instantly."
     }
   ];
 
-  return (
-    <section className="py-24 bg-[#16161d] border-y border-white/5 relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
-      
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <ScrollReveal className="text-center max-w-3xl mx-auto mb-20">
-          <div className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white text-sm font-semibold mb-6">
-            How It Works
-          </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">Up and running in 30 seconds</h2>
-          <p className="text-lg text-secondary-foreground">
-            No complex setup. No configuration files. Just add and play.
-          </p>
-        </ScrollReveal>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.1 } }
+  };
 
-        <StaggerChildren className="relative">
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
+
+  return (
+    <section className="py-32 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-20 flex flex-col items-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/[0.08] bg-[rgba(255,255,255,0.06)] text-[11px] tracking-widest uppercase text-white/60 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#e03030]" />
+            Setup
+          </div>
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+            Up and running in <span className="accent-italic">30 seconds</span>
+          </h2>
+        </div>
+
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="relative"
+        >
           {/* Connecting line desktop */}
-          <div className="hidden md:block absolute top-12 left-16 right-16 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+          <div className="hidden lg:block absolute top-[40px] left-[15%] right-[15%] h-px bg-white/[0.06] -z-10" />
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 relative z-10">
             {steps.map((step, i) => (
-              <StaggerItem key={i} className="flex flex-col items-center text-center">
-                <div className="w-24 h-24 rounded-full bg-[#1c1c26] border border-white/10 flex items-center justify-center mb-8 relative shadow-lg">
-                  <div className="absolute inset-0 rounded-full bg-primary/20 blur-md opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <span className="text-3xl font-black text-primary relative z-10">{step.num}</span>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">{step.title}</h3>
-                <p className="text-secondary-foreground">{step.desc}</p>
-              </StaggerItem>
+              <motion.div key={i} variants={itemVariants} className="bg-[#0d0d0d] border border-white/[0.06] rounded-2xl p-8 hover:border-white/[0.1] hover:-translate-y-0.5 transition-all duration-300">
+                <div className="text-sm font-mono text-[#e03030] mb-4">{step.num}</div>
+                <h3 className="text-2xl font-bold text-white mb-3">{step.title}</h3>
+                <p className="text-white/50 text-sm leading-relaxed">{step.desc}</p>
+              </motion.div>
             ))}
           </div>
-        </StaggerChildren>
+        </motion.div>
       </div>
     </section>
   );
