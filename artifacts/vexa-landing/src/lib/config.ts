@@ -8,8 +8,8 @@ export const VEXA_DATA = {
     ultra: "https://discord.com/oauth2/authorize?client_id=1529737931529519195&permissions=282162275675329&integration_type=0&scope=bot+applications.commands"
   },
   stats: {
-    servers: "50,000+",
-    users: "2,000,000+",
+    servers: "2,500+",
+    users: "15,000+",
     commands: "45+"
   }
 };
